@@ -3,7 +3,7 @@ header {
   align-items: center;
 }
 body {
-  background-image: url("{{url_for('static',filename='pics/background.jpg')}}");
+  background-image: url("../pics/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
