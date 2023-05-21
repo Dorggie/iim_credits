@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/styles.css')}}"
+    />
+  </head>
+  <body background="">
+    <header>
+      <div class="logo">
+        <img
+          src="{{url_for('static',filename='pics/NYCU_logo.png')}}"
+          alt="Logo"
+        />
+      </div>
+      <div class="site-title">
+        <h1>{% block topic %}{% endblock %}</h1>
+      </div>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
+      <div class="team">
+        <div class="team-member">
+          <img
+            src="{{url_for('static',filename='pics/dorggie.png')}}"
+            alt="Member 1"
+          />
+          <div class="member-info">
+            <div class="name">杜知翰</div>
+            <div class="info">Position: Developer</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="member2.jpg" alt="Member 2" />
+          <div class="member-info">
+            <div class="name">Jane Smith</div>
+            <div class="info">Position: Designer</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="member3.jpg" alt="Member 3" />
+          <div class="member-info">
+            <div class="name">Mike Johnson</div>
+            <div class="info">Position: Project Manager</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="member4.jpg" alt="Member 4" />
+          <div class="member-info">
+            <div class="name">Emily Davis</div>
+            <div class="info">Position: Marketing Specialist</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="member5.jpg" alt="Member 5" />
+          <div class="member-info">
+            <div class="name">Tom Wilson</div>
+            <div class="info">Position: Quality Assurance</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

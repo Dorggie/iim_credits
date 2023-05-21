@@ -2,7 +2,7 @@ header {
   display: flex;
   align-items: center;
 }
-body {
+body{
   background-image: url("../pics/background.jpg");
   background-size: cover;
   background-position: center;
@@ -42,12 +42,12 @@ textarea {
   font-size: large;
 }
 
-button[type="submit"] {
+input[type="submit"] {
   width: 100%;
   padding: 12px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-button[type="submit"]:hover {
+input[type="submit"]:hover {
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
@@ -86,4 +86,42 @@ footer {
 
 .team-member .info {
   color: gray;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.left-column {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}
+
+.right-column {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}
+
+.left-list,
+.right-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left-item {
+  font-size: 32px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+.right-item {
+  font-size: 22px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
 }

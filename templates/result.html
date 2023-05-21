@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}計算學分結果{% endblock %} {% block
+topic %}NYCU IIM 學分計算機 計算結果{% endblock %} {% block content %}
+<p>Message: {{ data }}</p>
+<div class="container">
+  <div class="left-column">
+    <ul class="left-list">
+      <li class="left-item">已有學分: 3</li>
+      <li class="left-item">正在修的學分: 4</li>
+      <li class="left-item">還缺的學分: 5</li>
+    </ul>
+  </div>
+  <div class="right-column">
+    <ul class="right-list">
+      <li class="right-item">還缺的seminar學分: 2</li>
+      <li class="right-item">還需要的課程大類: 2</li>
+      <li class="right-item">還需要的不同老師: 1</li>
+      <li class="right-item">還需要的課程數量: 3</li>
+    </ul>
+  </div>
+  {% endblock %}
+</div>
