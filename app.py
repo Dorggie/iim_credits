@@ -13,6 +13,7 @@ def main():
     if request.method == 'POST':
         input_string = request.form['credits']
         final = org(input_string)
+        print(type(final))
         return render_template('result.html', data=final)
     return render_template("index.html")
 
@@ -34,7 +35,7 @@ def org(input_str):
         # for d in de:
         #     print(d)
         course_id.append(de[2])
-        if de[3] == '資管碩':
+        if de[3] == '資管碩' or de[3] == '資管專':
             department.append(1)
         else:
             department.append(0)
@@ -101,10 +102,7 @@ def org(input_str):
         # and student_df.scores[i]!='unfinised':
         if student_df.department[i] == 0:
             other_credits += float(student_df.credits[i])
-            pass
-
-        # 本系
-        if student_df.department[i] == 1:
+        elif student_df.department[i] == 1:
             current_iim_course += 1
             need_course -= 1
             id = all_courses.index(student_df.course_name[i])
@@ -126,15 +124,12 @@ def org(input_str):
     result = {"need_seminar": need_seminar,
               "got_credits": got_credits,
               "current_credits": current_credits,
-              "current_credits": current_credits,
-              "need_credits": need_credits,
+              "need_credits": need_credits - current_credits,
               "need_class": need_class,
               "need_teacher": need_teacher,
               "need_course": need_course}
-
-    result_json = json.dumps(result)
-    return result_json
+    return result
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=3000)
+    app.run(host="0.0.0.0", port=80)

@@ -88,40 +88,41 @@ footer {
   color: gray;
 }
 
-
+/* 從這裡開始*/
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 20px; /* 增加间隔 */
+  height: 400px;
 }
 
-.left-column {
-  background-color: rgba(255, 255, 255, 0.5);
+.column {
+  background-color: transparent; /* 透明背景 */
   padding: 10px;
 }
 
-.right-column {
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
-}
-
-.left-list,
-.right-list {
-  list-style-type: none;
+.list {
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.left-item {
-  font-size: 32px;
-  color: #333;
+.item {
+  display: flex; /* 使用 Flexbox 布局 */
+  align-items: center; /* 垂直居中对齐 */
   font-family: Arial, sans-serif;
   margin-bottom: 10px;
+  border: 1px solid black; /* 外边框样式 */
+  padding: 5px; /* 增加内边距 */
 }
 
-.right-item {
-  font-size: 22px;
+.item-text {
+  flex: 1; /* 文本部分占据剩余空间 */
+  font-size: 40px;
   color: #333;
-  font-family: Arial, sans-serif;
-  margin-bottom: 10px;
+}
+
+.item-number {
+  font-size: 50px;
+  color: #333;
+  text-align: right; /* 数字右对齐 */
 }

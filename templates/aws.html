@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>計算學分</title>
+    <meta charset="utf-8" />
+    <style>
+      header {
+        display: flex;
+        align-items: center;
+      }
+      body {
+        background-image: url("pics/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .logo img {
+        width: 75px;
+        margin-right: 10px;
+      }
+
+      .site-title {
+        flex: 1;
+        text-align: center;
+      }
+
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      form {
+        width: 80%; /* 調整表單寬度 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 10px;
+        resize: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        font-size: large;
+      }
+
+      button[type="button"] {
+        width: 100%;
+        padding: 12px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      button[type="button"]:hover {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+      }
+
+      .team {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .team-member {
+        flex-basis: 20%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .team-member img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      .team-member .name {
+        font-weight: bold;
+      }
+
+      .team-member .info {
+        color: gray;
+      }
+
+      /* 從這裡開始*/
+      .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; /* 增加间隔 */
+        height: 400px;
+      }
+
+      .column {
+        background-color: transparent; /* 透明背景 */
+        padding: 10px;
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .item {
+        display: flex; /* 使用 Flexbox 布局 */
+        align-items: center; /* 垂直居中对齐 */
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+        border: 1px solid black; /* 外边框样式 */
+        padding: 5px; /* 增加内边距 */
+      }
+
+      .item-text {
+        flex: 1; /* 文本部分占据剩余空间 */
+        font-size: 40px;
+        color: #333;
+      }
+
+      .item-number {
+        font-size: 50px;
+        color: #333;
+        text-align: right; /* 数字右对齐 */
+      }
+    </style>
+    <script>
+      var callAPI = (content) => {
+        console.log("content", content);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({ content: content }); // 要加引號
+        var requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        };
+        console.log("request option", requestOptions);
+        fetch(
+          "https://ucj30hf02b.execute-api.us-east-1.amazonaws.com/dev",
+          requestOptions
+        )
+          .then((response) => response.text())
+          .then((result) => alert(JSON.parse(result).body))
+          .catch((error) => console.log("error", error));
+      };
+    </script>
+  </head>
+  <body background="">
+    <header>
+      <div class="logo">
+        <img src="pics/NYCU_logo.png" alt="Logo" />
+      </div>
+      <div class="site-title">
+        <h1>NYCU IIM 學分計算機</h1>
+      </div>
+    </header>
+    <main>
+      <form id="myForm">
+        <textarea
+          id="grade-input"
+          placeholder="Input your grade"
+          name="credits"
+        ></textarea>
+        <button
+          type="button"
+          name="submit"
+          onclick="callAPI(document.getElementById('grade-input').value)"
+        >
+          Submit
+        </button>
+      </form>
+    </main>
+    <footer>
+      <div class="team">
+        <div class="team-member">
+          <img src="pics/Dorggie.png" alt="Member 1" />
+          <div class="member-info">
+            <div class="name">杜知翰</div>
+            <div class="info">Position: Joker</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="pics/Christina.jpg" alt="Member 2" />
+          <div class="member-info">
+            <div class="name">蔡懿晨</div>
+            <div class="info">Position: Leader</div>
+            <div class="info">AWS is Bad</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="pics/Selena.jpg" alt="Member 3" />
+          <div class="member-info">
+            <div class="name">黃詩媛</div>
+            <div class="info">Position: Project Manager</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="pics/Yen.jpg" alt="Member 4" />
+          <div class="member-info">
+            <div class="name">許佳燕</div>
+            <div class="info">Position: Marketing Specialist</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="pics/David.jpg" alt="Member 5" />
+          <div class="member-info">
+            <div class="name">陳子翊</div>
+            <div class="info">Position: Quality Assurance</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
